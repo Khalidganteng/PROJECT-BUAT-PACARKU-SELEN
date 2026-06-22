@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Maafin Aku ❤️</title>
+
+<!-- Tailwind -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- Font -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+<!-- Three JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+<!-- GSAP -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+<!-- Confetti -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:sans-serif;
+background:#0c0a09;
+overflow:hidden;
+color:white;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+}
+
+/* Aurora */
+body::before{
+content:"";
+position:fixed;
+inset:0;
+background:
+radial-gradient(circle at 20% 20%,hsla(333,70%,55%,.4),transparent),
+radial-gradient(circle at 80% 20%,hsla(282,82%,54%,.3),transparent),
+radial-gradient(circle at 50% 80%,hsla(210,89%,60%,.3),transparent),
+radial-gradient(circle at 70% 50%,hsla(35,90%,60%,.3),transparent);
+filter:blur(100px);
+animation:aurora 12s infinite alternate;
+}
+
+@keyframes aurora{
+from{
+transform:scale(1);
+}
+to{
+transform:scale(1.2);
+}
+}
+
+/* Progress */
+.progress{
+position:fixed;
+top:15px;
+width:250px;
+height:8px;
+background:rgba(255,255,255,.15);
+border-radius:20px;
+overflow:hidden;
+backdrop-filter:blur(10px);
+}
+
+.bar{
+height:100%;
+width:20%;
+background:linear-gradient(to right,#ff4d9d,#ff4b4b);
+transition:.5s;
+}
+
+/* Card */
+.card{
+position:absolute;
+width:90%;
+max-width:500px;
+padding:40px;
+background:rgba(255,255,255,.07);
+backdrop-filter:blur(30px);
+border:1px solid rgba(255,255,255,.1);
+border-radius:30px;
+text-align:center;
+display:none;
+}
+
+.active{
+display:block;
+}
+
+h1{
+font-family:"Playfair Display";
+font-size:40px;
+background:linear-gradient(to right,#fff,#ffc8dc);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.icon{
+font-size:70px;
+margin-bottom:20px;
+animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+50%{
+transform:scale(1.1);
+}
+}
+
+button{
+margin-top:25px;
+padding:14px 30px;
+border:none;
+border-radius:999px;
+background:linear-gradient(to right,#ff4d9d,#ff4b4b);
+color:white;
+font-weight:bold;
+cursor:pointer;
+transition:.3s;
+box-shadow:0 0 20px rgba(255,70,130,.5);
+}
+
+button:hover{
+transform:scale(1.05);
+}
+
+#final{
+opacity:0;
+margin-top:25px;
+font-size:25px;
+color:#ffc9dd;
+}
+</style>
+</head>
+<body>
+
+<div class="progress">
+<div class="bar" id="bar"></div>
+</div>
+
+<!-- STEP 1 -->
+<div class="card active">
+<div class="icon">💕</div>
+<h1>Hai Cantik,</h1>
+<p class="mt-5 text-gray-200">
+Aku membuat dunia kecil ini khusus untukmu, karena ada sesuatu yang ingin kusampaikan dari hati yang paling dalam.
+</p>
+
+<button onclick="next()">Mari Mulai</button>
+</div>
+
+<!-- STEP 2 -->
+<div class="card">
+<div class="icon">🤍</div>
+<h1>Maafin Aku Ya Sayang...</h1>
+
+<p class="mt-5 text-gray-200">
+Aku tahu aku telah membuatmu kecewa. Aku benar-benar menyesal dan sangat menghargai kehadiranmu dalam hidupku.
+</p>
+
+<button onclick="next()">Masih ada lagi...</button>
+</div>
+
+<!-- STEP 3 -->
+<div class="card">
+<h1>Beberapa Hal Yang Aku Sukai Darimu</h1>
+
+<div class="mt-6 space-y-3 text-left">
+
+<div class="bg-white/10 p-4 rounded-xl">
+  facee kamuu yg lucu 
+</div>
+
+<div class="bg-white/10 p-4 rounded-xl">
+ sifatt kamu yg membuat akuu tenang dan merasa aman
+</div>
+
+<div class="bg-white/10 p-4 rounded-xl">
+ dan juga setiap ego kamu yg membuat aku terus bersabar ilove youu sayang 🤍💕
+</div>
+
+</div>
+
+<button onclick="next()">Ingat ini?</button>
+
+</div>
+
+<!-- STEP 4 -->
+<div class="card">
+
+<h1>Waktu Itu...</h1>
+
+<img src="https://i.ibb.co/6Z6XgCg/crush.webp"
+class="rounded-xl mt-5">
+
+<p class="mt-5">
+Setiap momen bersamamu adalah kenangan yang sangat berharga.
+</p>
+
+<button onclick="next()">Satu hal terakhir...</button>
+
+</div>
+
+<!-- STEP 5 -->
+<div class="card">
+
+<div class="icon">🥺</div>
+
+<h1>Dari Hati Yang Tulus</h1>
+
+<p class="mt-5">
+Aku mungkin tidak sempurna, tapi aku sungguh menyesal. Jika masih ada kesempatan, aku ingin memperbaiki semuanya.
+</p>
+
+<div id="final">
+maaafin akuu yaaa sayang semua kesalahan aku dan apk mod epep ituu yg membuat kamu ribet sampe hampir seharian... i always love you
+</div>
+
+<button id="finish" onclick="celebrate()">
+Terima Permintaan Maafku 💕
+</button>
+
+</div>
+
+<script>
+
+let current=0;
+let cards=document.querySelectorAll(".card");
+let bar=document.getElementById("bar");
+
+function next(){
+
+cards[current].classList.remove("active");
+
+current++;
+
+cards[current].classList.add("active");
+
+bar.style.width=(current+1)*20+"%";
+
+gsap.from(cards[current],{
+opacity:0,
+y:50,
+duration:1
+})
+
+}
+
+function celebrate(){
+
+document.getElementById("finish").style.display="none";
+
+gsap.to("#final",{
+opacity:1,
+y:-20,
+duration:1
+});
+
+confetti({
+particleCount:200,
+spread:120,
+origin:{y:.8}
+});
+
+setInterval(()=>{
+confetti({
+particleCount:5,
+spread:100
+})
+},200);
+
+}
+
+</script>
+
+</body>
+</html>
