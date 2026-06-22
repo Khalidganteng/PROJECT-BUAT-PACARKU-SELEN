@@ -1,0 +1,15 @@
+{
+  "name": "project-buat-pacarku-selen",
+  "version": "1.0.0",
+  "description": "Project untuk pacarku Selen",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "selenium-webdriver": "^4.15.0"
+  },
+  "author": "Khalidganteng",
+  "license": "ISC"
+}
